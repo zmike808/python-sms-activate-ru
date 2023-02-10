@@ -101,8 +101,7 @@ class SetStatus(ActionsModel):
 
 	@error_handler
 	def __response_processing(self, response):
-		data = {'status': response}
-		return data
+		return {'status': response}
 
 	def request(self, wrapper):
 		"""

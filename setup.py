@@ -19,10 +19,9 @@ def long_description():
 
 def requirements():
 	"""Build the requirements list for this project"""
-	requirements_list = list()
+	requirements_list = []
 	with open('requirements.txt') as pc_requirements:
-		for install in pc_requirements:
-			requirements_list.append(install.strip())
+		requirements_list.extend(install.strip() for install in pc_requirements)
 	return requirements_list
 
 

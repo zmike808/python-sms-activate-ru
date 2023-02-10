@@ -21,27 +21,21 @@ class SmsActivation:
 			id=self.__id,
 			status=smsactivateru.SmsTypes.Status.Cancel
 		)
-		if self.wrapper:
-			return set_status.request(self.wrapper)
-		return set_status
+		return set_status.request(self.wrapper) if self.wrapper else set_status
 
 	def mark_as_used(self):
 		set_status = smsactivateru.SetStatus(
 			id=self.__id,
 			status=smsactivateru.SmsTypes.Status.AlreadyUsed
 		)
-		if self.wrapper:
-			return set_status.request(self.wrapper)
-		return set_status
+		return set_status.request(self.wrapper) if self.wrapper else set_status
 
 	def was_sent(self):
 		set_status = smsactivateru.SetStatus(
 			id=self.__id,
 			status=smsactivateru.SmsTypes.Status.SmsSent
 		)
-		if self.wrapper:
-			return set_status.request(self.wrapper)
-		return set_status
+		return set_status.request(self.wrapper) if self.wrapper else set_status
 
 	def wait_code(self, timeout=1200, callback=None, not_end=False, *args, **kwargs):
 		"""
