@@ -26,7 +26,7 @@ class SmsService:
 				base_class=ServiceModel,
 				argnames=['__service_short_name', '__count_slot']
 			)(__service_short_name=short_name, __count_slot=0)
-			setattr(self, '_' + name, object)
+			setattr(self, f'_{name}', object)
 
 	@property
 	def VkCom(self):

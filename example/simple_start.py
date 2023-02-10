@@ -11,7 +11,7 @@ wrapper = Sms('API KEY')
 # getting balance
 balance = GetBalance().request(wrapper)
 # show balance
-print('На счету {} руб.'.format(balance))
+print(f'На счету {balance} руб.')
 
 # ------------------------------ #
 
@@ -21,9 +21,9 @@ available_phones = GetFreeSlots(
 	operator=SmsTypes.Operator.TELE2
 ).request(wrapper)
 # show for vk.com, whatsapp and youla.io)
-print('vk.com: {} номеров'.format(available_phones.VkCom.count))
-print('whatsapp: {} номеров'.format(available_phones.Whatsapp.count))
-print('youla.io: {} номеров'.format(available_phones.Youla.count))
+print(f'vk.com: {available_phones.VkCom.count} номеров')
+print(f'whatsapp: {available_phones.Whatsapp.count} номеров')
+print(f'youla.io: {available_phones.Youla.count} номеров')
 
 # ------------------------------ #
 
@@ -35,7 +35,7 @@ activation = GetNumber(
 ).request(wrapper)
 
 # show activation id and phone for reception sms
-print('id: {} phone: {}'.format(str(activation.id), str(activation.phone_number)))
+print(f'id: {str(activation.id)} phone: {str(activation.phone_number)}')
 
 # .. send phone number to you service
 user_action = input('Press enter if you sms was sent or type "cancel": ')
@@ -49,7 +49,7 @@ activation.was_sent()
 
 # callback method for eval (if callback not set, code will be return)
 def fuck_yeah(code):
-	print('Oh, it\'s my code! {}'.format(code))
+	print(f"Oh, it\'s my code! {code}")
 
 
 # .. wait code

@@ -5,10 +5,7 @@ import sys
 
 def all_classes_name(module: str):
 	clsmembers = inspect.getmembers(sys.modules[module], inspect.isclass)
-	result = []
-	for class_tuple in clsmembers:
-		result.append(class_tuple[0])
-	return result
+	return [class_tuple[0] for class_tuple in clsmembers]
 
 
 def object_factory(name, base_class, argnames):

@@ -10,16 +10,16 @@ wrapper = Sms('API KEY')
 # getting balance
 balance = GetBalance().request(wrapper)
 # show balance
-print('На счету {} руб.'.format(balance))
+print(f'На счету {balance} руб.')
 
 # getting free slots (count available phone numbers for each services)
 available_phones = GetFreeSlots(
 	country=SmsTypes.Country.RU
 ).request(wrapper)
 # show for vk.com, whatsapp and youla.io)
-print('vk.com: {} номеров'.format(available_phones.VkCom.count))
-print('whatsapp: {} номеров'.format(available_phones.Whatsapp.count))
-print('youla.io: {} номеров'.format(available_phones.Youla.count))
+print(f'vk.com: {available_phones.VkCom.count} номеров')
+print(f'whatsapp: {available_phones.Whatsapp.count} номеров')
+print(f'youla.io: {available_phones.Youla.count} номеров')
 
 # try get phone for youla.io
 activation = GetNumber(
@@ -28,7 +28,7 @@ activation = GetNumber(
 	operator=SmsTypes.Operator.Beeline
 ).request(wrapper)
 # show activation id and phone for reception sms
-print('id: {} phone: {}'.format(str(activation.id), str(activation.phone_number)))
+print(f'id: {str(activation.id)} phone: {str(activation.phone_number)}')
 
 # getting and show current activation status
 response = GetStatus(id=activation.id).request(wrapper)
@@ -56,7 +56,7 @@ while True:
 	time.sleep(1)
 	response = GetStatus(id=activation.id).request(wrapper)
 	if response['code']:
-		print('Your code:{}'.format(response['code']))
+		print(f"Your code:{response['code']}")
 		break
 
 # set current activation status as End (you got code and it was right)
